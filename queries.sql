@@ -61,7 +61,7 @@ ORDER BY age_category
 SELECT 	
 	TO_CHAR(DATE_TRUNC('month', s.sale_date), 'YYYY-MM') AS selling_month,
 	COUNT(DISTINCT s.customer_id) AS total_customers,
-	SUM(s.quantity * p.price) AS income
+	FLOOR(SUM(s.quantity * p.price)) AS income
 FROM sales s
 INNER JOIN products p 
 	ON p.product_id = s.product_id 
